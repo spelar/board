@@ -18,6 +18,7 @@ function App() {
       <Routes>
         <Route element={<PageLayout />}>
           <Route path="/" element={<HomePage />} />
+          
         </Route>
       </Routes>
     </>
