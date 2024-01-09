@@ -18,7 +18,9 @@ function App() {
       <Routes>
         <Route element={<PageLayout />}>
           <Route path="/" element={<HomePage />} />
-          
+          <Route path="/question-board">
+            <Route path="list" element={<QuestionPage />} />
+          </Route>
         </Route>
       </Routes>
     </>
