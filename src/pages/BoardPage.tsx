@@ -4,6 +4,7 @@ import useGetBoard from "../hooks/home/useGetBoard";
 import useGetRepository from "../hooks/common/useGetRepository";
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
+import SearchComponent from "../components/common/SearchComponent";
 import { formatFullCreatedAt } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { setItem } from "../redux/modules/detail/slice";
@@ -35,6 +36,10 @@ function BoardPage({ boardType, repositoryType }: BoardPageProps) {
   const displayedBoardList =
     searchedBoardList.length > 0 ? searchedBoardList : boardList;
 
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
+  };
+
   const handleRowClick = (item: any, itemId: number | string) => {
     dispatch(setItem(item));
     navigate(`/${boardType}/detail/${itemId}`);
@@ -47,6 +52,7 @@ function BoardPage({ boardType, repositoryType }: BoardPageProps) {
   return (
     <>
       <SearchContainer aria-label="검색 섹션">
+        <SearchComponent boardType={boardType} />
         <button onClick={() => navigate(`/${boardType}/write`)}>글쓰기</button>
       </SearchContainer>
       <TableContainer>
