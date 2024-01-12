@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useSearchBoard from "../../hooks/common/useSearchBoard";
 import { useDispatch } from "react-redux";
 import { setSearchResults } from "../../redux/modules/search";
+import ModalComponent from "./ModalComponent";
 
 type SearchComponentProps = {
   boardType: string;
@@ -79,6 +80,10 @@ function SearchComponent({ boardType }: SearchComponentProps) {
           검색
         </button>
       </SearchContainer>
+      <ModalComponent show={showModal} onClose={() => setShowModal(false)}>
+        <ModalMessage>{modalMessage}</ModalMessage>
+        <ModalButton onClick={() => setShowModal(false)}>닫기</ModalButton>
+      </ModalComponent>
     </>
   );
 }
