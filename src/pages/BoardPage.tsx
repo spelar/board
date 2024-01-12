@@ -8,6 +8,7 @@ import SearchComponent from "../components/common/SearchComponent";
 import { formatFullCreatedAt } from "../utils";
 import { useNavigate } from "react-router-dom";
 import { setItem } from "../redux/modules/detail/slice";
+import PaginationComponent from "../components/common/PaginationComponent";
 
 const PAGE_SIZE = 10;
 
@@ -95,6 +96,15 @@ function BoardPage({ boardType, repositoryType }: BoardPageProps) {
           </tbody>
         </Table>
       </TableContainer>
+
+      <PaginationComponent
+        currentPage={currentPage}
+        totalPages={
+          Math.ceil((repositoryInfo?.open_issues_count || 0) / PAGE_SIZE) || 1
+        }
+        onPageChange={handlePageChange}
+        aria-label="페이지 네비게이션"
+      />
     </>
   );
 }
