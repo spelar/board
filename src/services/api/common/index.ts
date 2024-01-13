@@ -27,3 +27,18 @@ export const searchBoardApi = async ({
   });
   return data;
 };
+
+export const createBoardApi = async ({
+  title,
+  body,
+  firstSegment,
+}: CreateBoardProps) => {
+  const { data } = await axiosInstance.post(
+    `/repos/spelar/${firstSegment}/issues`,
+    {
+      title,
+      body,
+    }
+  );
+  return data;
+};

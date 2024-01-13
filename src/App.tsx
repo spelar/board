@@ -20,6 +20,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/question-board">
             <Route path="list" element={<QuestionPage />} />
+            <Route path="write" element={<WritePage />} />>
           </Route>
         </Route>
       </Routes>
