@@ -15,6 +15,16 @@ export const getRepositoryApi = async ({
   return data;
 };
 
+export const getBoardDetailApi = async ({
+  firstSegment,
+  boardNumber,
+}: getBoardDetailApiProps) => {
+  const { data } = await axiosInstance.get(
+    `/repos/spelar/${firstSegment}/issues/${boardNumber}`
+  );
+  return data;
+};
+
 export const searchBoardApi = async ({
   boardType,
   searchFilter,
