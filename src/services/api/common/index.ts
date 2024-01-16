@@ -52,3 +52,16 @@ export const createBoardApi = async ({
   );
   return data;
 };
+
+export const deleteBoardApi = async ({
+  firstSegment,
+  id,
+}: DeleteBoardProps) => {
+  const { data } = await axiosInstance.patch(
+    `/repos/spelar/${firstSegment}/issues/${id}`,
+    {
+      state: "closed",
+    }
+  );
+  return data;
+};

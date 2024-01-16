@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { formatFullCreatedAt, getPathSegment } from "../utils";
 import styled from "@emotion/styled";
 import useDeleteBoard from "../hooks/common/useDeleteBoard";
+import ConfirmModalComponent from "../components/common/ConfirmModalComponent";
 import useGetDetail from "../hooks/common/useGetDetail";
 import { setItem } from "../redux/modules/detail/slice";
 
@@ -112,6 +113,11 @@ function DetailPage() {
           <button onClick={handleGoToList}>목록</button>
         </ButtonGroup>
       </Container>
+      <ConfirmModalComponent show={showConfirmModal} onClose={cancelDelete}>
+        <ModalMessage>이 이슈를 정말로 삭제하시겠습니까?</ModalMessage>
+        <ModalCancelButton onClick={cancelDelete}>취소</ModalCancelButton>
+        <ModalAcceptButton onClick={confirmDelete}>확인</ModalAcceptButton>
+      </ConfirmModalComponent>
     </>
   );
 }
@@ -166,6 +172,36 @@ const ButtonGroup = styled.div`
     &:hover {
       background-color: #0056b3;
     }
+  }
+`;
+
+const ModalMessage = styled.p`
+  margin: 20px 0px;
+  min-width: 300px;
+  min-height: 30px;
+  text-align: center;
+`;
+
+const ModalCancelButton = styled.button`
+  margin-right: 8px;
+  padding: 4px 8px;
+  color: white;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #aaa;
+  }
+`;
+
+const ModalAcceptButton = styled.button`
+  padding: 4px 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: #0056b3;
   }
 `;
 
