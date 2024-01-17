@@ -22,6 +22,7 @@ function App() {
             <Route path="list" element={<QuestionPage />} />
             <Route path="write" element={<WritePage />} />
             <Route path="detail/:itemId" element={<DetailPage />} />
+            <Route path="edit/:itemId" element={<EditPage />} />
           </Route>
         </Route>
       </Routes>

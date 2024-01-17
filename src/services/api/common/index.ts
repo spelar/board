@@ -53,6 +53,22 @@ export const createBoardApi = async ({
   return data;
 };
 
+export const updateBoardApi = async ({
+  title,
+  body,
+  firstSegment,
+  boardNumber,
+}: UpdateBoardProps) => {
+  const { data } = await axiosInstance.patch(
+    `/repos/spelar/${firstSegment}/issues/${boardNumber}`,
+    {
+      title,
+      body,
+    }
+  );
+  return data;
+};
+
 export const deleteBoardApi = async ({
   firstSegment,
   id,
